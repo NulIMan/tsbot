@@ -20,7 +20,8 @@ export const ek = {
     aciklama: "", // açıklama
     kategori: "", // kategorisi
     bakım: // false olursa komut herkese açık olur true yaparsanız ////sadece config deki işi kullanabilir
-};```
+};
+```
 
 # Discord
 [BANA TIKLA](https://discord.gg/KrQwqeCW)
