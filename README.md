@@ -19,7 +19,7 @@ export const ek = {
     komut: "", // komut ismi
     aciklama: "", // açıklama
     kategori: "", // kategorisi
-    bakım: // false olursa komut herkese açık olur true yaparsanız ////sadece config deki işi kullanabilir
+    bakim: // false olursa komut herkese açık olur true yaparsanız ////sadece config deki işi kullanabilir
 };
 ```
 
