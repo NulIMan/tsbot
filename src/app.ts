@@ -4,6 +4,15 @@ import * as fs from "fs"
 import * as chalk from "chalk"
 import {config} from "./config"
 import {emoji} from "./config"
+import * as croxy from "croxydb"
+import * as adapter from "croxydb/adapters/jsondb"
+const db = new croxy(adapter, {
+	"dbName":"database",
+	"dbFolder":"prelessdata",
+	"noBlankData": true,
+    "readable": true,
+    "language": "tr"
+})
 const ayarlar = ({
 	"token": "NzUxMzU5NDI3ODQzNTg4MjE5.X1H7_w.YR1an30Axw_83BMllR9rEOOqsHM",
 	"prefix": "ts?",
@@ -13,11 +22,6 @@ const ayarlar = ({
   const commands = new Discord.Collection()
   const client: Discord.Client = new Discord.Client();
 
- // const client: (Discord.Client & {
-//    commands: typeof commands
-//  }) = Object.assign({}, new Discord.Client(), {ayarlar,commands}) as (Discord.Client & {
-//    commands: typeof commands
- // });
 fs.readdir(`./src/commands/`, async(err, files) => {
 	console.log(files || err)
 var jsfiles = files.filter(f => f.split(".").pop() === "ts")
@@ -47,7 +51,14 @@ client.on("message", async message => {
 	
 	if (commands.has(command)) {
 	var cmd = commands.get(command) as any
-				
+			if (db.get(`${message.author.id}.karaliste`)) {
+		const embed = new Discord.MessageEmbed()
+			.setDescription(`${emoji.no} Hey sen **${db.get(`${message.author.id}.karaliste`)}** Sebebiyle Karalisteye Alınmışsın!`)
+			.setColor(config.hatarenk)
+			.setTimestamp()
+		message.channel.send({embed})
+		return
+	}		
 	if(cmd.ek.bakim) {
 		if (message.author.id !== config.devs) {
 			const embed = new Discord.MessageEmbed()
@@ -157,8 +168,14 @@ client.on("message", async message => {
 								return
 							}
 						}
-
-		cmd.preless(client, message, args, commands)
+	const sdb = new croxy(adapter, {
+							"dbName":message.guild.id,
+							"dbFolder":"preless-sunucu",
+							"noBlankData": true,
+							"readable": true,
+							"language": "tr"
+						})
+		cmd.preless(client, message, args, commands, sdb)
 	}
 })
 
