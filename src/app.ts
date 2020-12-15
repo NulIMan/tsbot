@@ -58,7 +58,7 @@ const permList: permListInt[] = [
 	{ level: 10, tr_name: "Bot sahibi", dc_api_name: "BOT_OWNER" }
 ]; //  9 ve 10. permdek dc_api_name keyfi olarak yazdım. (Boş gözükmesin diye xd)
 
-client.on("message", async(message: Discord.Message) => {
+client.on("message", async(message) => {
 	if (message.author.bot || !message.content.startsWith(ayarlar.prefix)) return;
 	const command: string = message.content.split(' ')[0].slice(ayarlar.prefix.length);
 	const args: Array<string> = message.content.split(' ').slice(1);
