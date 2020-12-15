@@ -45,7 +45,7 @@ interface permListInt {
 	dc_api_name: string
 };
 
-const permList: permListInt = [
+const permList: permListInt[] = [
 	{ level: 1, tr_name: "Mesajları yönet", dc_api_name: "MANAGE_MESSAGES" },
 	{ level: 2, tr_name: "Üyeleri at", dc_api_name: "KICK_MEMBERS" },
 	{ level: 3, tr_name: "Üyeleri yasakla", dc_api_name: "BAN_MEMBERS" },
