@@ -20,7 +20,7 @@ const ayarlar: ayarlarInt = ({
 const commands: Discord.Collection = new Discord.Collection();
 const client: Discord.Client = new Discord.Client();
 
-fs.readdir("./commands", (err: any, files: Array<string>) => {
+fs.readdir("./commands", (err: any, files: string[]) => {
 	if (err) return console.error(`${chalk.redBright("Hata çıktı;")}\n${err}\n\n${chalk.greenBright("Hatayı düzeltmen için bir kaç tavsiye vereceğim. İlk öncelikle ayarları doğru girdiğinden ve boş bırakmadığından emin ol. Daha sonra kendin eklediğin komutlara iyice bak ve örnek komutla karşılaştır. Hatan varsa düzelt. Eğer kodda hata olduğunu düşünüyorsan bildirmekten çekinme!")}`)
 	else if (files.length == 0) return console.log(`${chalk.redBright("Üzgünüm ama hiçbir komut bulunamadı!")}`)
 	else if (files.filter((f: string) => f.split(".").pop() == "js").length == 0) return console.log(`${chalk.redBright("Üzgünüm ama hiçbir komut bulunamadı!")}`)
