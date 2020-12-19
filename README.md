@@ -24,4 +24,5 @@ export const ek = {
 ```
 
 # Discord
-[BANA TIKLA](https://discord.gg/KrQwqeCW)
+[Preless](https://discord.gg/KrQwqeCW)
+[Vex](https://discord.gg/XFyWu9gEtP)
